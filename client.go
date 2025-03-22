@@ -36,6 +36,10 @@ type Client interface {
 
 	WithLogger(l resty.Logger)
 	WithDebug(d bool)
+	// NewRequest - create new resty.Request
+	NewRequest(method, path string, opt interface{}) *resty.Request
+	// Do - send specified resty.Request
+	Do(req *resty.Request, v interface{}) (*resty.Response, error)
 }
 
 func New(token, xOrgID, xCloudOrgID string) Client {
